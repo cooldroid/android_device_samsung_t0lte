@@ -30,12 +30,18 @@ COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{ "ril.ks.status", AID_SYSTEM, 
 COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-ifeq ($(TARGET_VOICE_TECH), cdma)
-TARGET_KERNEL_CONFIG := cyanogenmod_t0ltecdma_defconfig
-else
-TARGET_KERNEL_CONFIG := cyanogenmod_t0lte_defconfig
-endif
+#TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
+#ifeq ($(TARGET_VOICE_TECH), cdma)
+#TARGET_KERNEL_CONFIG := cyanogenmod_t0ltecdma_defconfig
+#else
+#TARGET_KERNEL_CONFIG := cyanogenmod_t0lte_defconfig
+#endif
+BOARD_KERNEL_CMDLINE :=  console=ttyHSL0,115200,n8 androidboot.hardware=jet
+BOARD_KERNEL_BASE :=  0x10000000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x11000000
+TARGET_PREBUILT_KERNEL := device/samsung/t0lte/kernel
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/smdk4412-common/custombootimg.mk
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/samsung/t0lte/rootdir/fstab.smdk4x12

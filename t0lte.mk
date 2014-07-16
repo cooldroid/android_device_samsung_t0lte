@@ -21,6 +21,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.smdk4x12:root/fstab.smdk4x12
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/extra.fstab:root/etc/extra.fstab
+
+PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # Include common makefile
